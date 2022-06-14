@@ -9,6 +9,5 @@
         values
 
 """
-# hello world
-print("hello world")
 # 写一个函数，判断是否为闰年
+
