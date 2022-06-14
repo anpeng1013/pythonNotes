@@ -1,2 +1,2 @@
 # python学习笔记
-# 如果Git无法push或pull，大概率是网络C问题
+# 如果Git无法push或pull，大概率是网络问题
