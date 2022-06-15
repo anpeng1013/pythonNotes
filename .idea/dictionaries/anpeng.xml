@@ -13,6 +13,7 @@
       <w>rljust</w>
       <w>rstrip</w>
       <w>schoolname</w>
+      <w>unhashable</w>
     </words>
   </dictionary>
 </component>
