@@ -31,4 +31,9 @@
     选择选项卡 Ctrl + tab  alt + 左右箭头
     关闭选项卡 Alt + g
 
+    git操作：
+        1.进入提交commit界面--shift+C
+        2.提交并推送commit and push--Alt+shift+C
+        3.确认推送push--Alt+P
+
 """
