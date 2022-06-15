@@ -36,4 +36,4 @@ print(dict({'a': 12, 2: 33}, a=89, b=0b101))
 print('使用大括号映射来创建字典-----------------------------------------')
 dictVar = {'a': 12, 12: 'age'}
 print(dictVar)
-print(type(dictVar))
+print(type(dictVar), 'test commit keymap')
