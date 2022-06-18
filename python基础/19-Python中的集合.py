@@ -26,7 +26,7 @@ print(set2)
 # update()追加一个可迭代的序列
 set2.update((12, 11, 10, 12))
 print(set2)
-set2.update('anpeng')
+set2.update('anpeng')  # "anpeng"会被拆分成单个字符追加进集合中
 print(set2)
 
 # 4.集合删除数据
@@ -37,7 +37,7 @@ print(set2)
 set2.discard('an')
 # pop(),随机删除集合中的数据，并返回这个数据。
 print(set2.pop())
-print(set2)  # 随机删除了'p'
+print(set2)  # 随机删除
 
 # 5.集合查找数据
 # in 或者 not in

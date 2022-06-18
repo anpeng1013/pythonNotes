@@ -36,4 +36,6 @@
         2.提交并推送commit and push--Alt+shift+C
         3.确认推送push--Alt+P
 
+    删除当前行：Ctrl + Y
+    重复当前行：Ctrl + D
 """

@@ -2,9 +2,9 @@
     列表[]：存贮多个可重复的多类型数据的可变容器。
         常用操作：增删改查
             增加：append(如果追加的是序列，则将整个序列加到列表中）、
-                  extend(如果追加的是序列，则将这个序列的元素逐一添加到列表中。
+                extend(如果追加的是序列，则将这个序列的元素逐一添加到列表中。
             删除：del指定下标或者删除整个列表、pop删除指定下标或者最后一个数据
-                  remove(数据)删除指定数据，clear清空列表。
+                remove(数据)删除指定数据，clear清空列表。
             修改：下标修改，reverse：逆置，sort(key=None,reverse=True),reverse=True降序，reverse=False升序(默认)
             查找：下标查找[]、位置查找index、个数查找len、判断存在 in、判断不存在 not in、次数查找count、列表切片。
 
@@ -50,7 +50,7 @@ print('hello' not in names)  # True
 print('anpeng' not in names)  # False
 
 # 列表切片
-temp_list = names[:4:1]
+temp_list = names[:4:2]
 print(temp_list)
 
 # 列表常用操作之增加
