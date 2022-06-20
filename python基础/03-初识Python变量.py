@@ -41,4 +41,3 @@ print(schoolName)
 # 定义变量：存储数据1013
 MyBirthday = 1013
 print(MyBirthday)
-
