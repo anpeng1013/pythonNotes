@@ -37,5 +37,10 @@
         3.确认推送push--Alt+P
 
     删除当前行：Ctrl + Y
+    复制当前行：Ctrl + C
     重复当前行：Ctrl + D
+
+    在当前文件中查找 -- Ctrl + F
+    在所有文件中查找 -- Alt + F
+    查找项目文件 -- 双击shift
 """

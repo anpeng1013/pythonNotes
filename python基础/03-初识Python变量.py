@@ -41,3 +41,7 @@ print(schoolName)
 # 定义变量：存储数据1013
 MyBirthday = 1013
 print(MyBirthday)
+
+# 同时定义多个变量
+a, b = 12, 56
+print(a, b)
