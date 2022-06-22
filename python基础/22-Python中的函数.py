@@ -31,24 +31,19 @@
         函数嵌套
 """
 
-
 # 1.函数定义
 def function():
     print('anpeng love huli')
-
 
 function()
 
 # 2.函数的参数
 # 2.1.1 参数传递内容之”传值“：数字、字符串、元组等不可变对象。
 print('-' * 60)
-
-
 def add(arg1, arg2):
     print('赋值前地址是：' + str(id(arg1)))
     arg1 = arg1 + arg2
     print('函数内形参arg1的地址是：' + str(id(arg1)), '内容是：' + str(arg1))
-
 
 num1, num2 = map(int, input("请输入两个数字：").split())
 print('传参前地址是：' + str(id(num1)))
@@ -67,13 +62,10 @@ print('函数外实参tuple1的地址是：' + str(id(tuple1)), '内容是：' +
 
 # 2.1.2 参数传递内容之”传地址“：列表、集合、字典等可变对象。
 print('-' * 60)
-
-
 def update_list(arg1):
     arg1[0] = 'anpeng'
     print('传参后形参地址：' + str(id(arg1)))
     print('函数内形参arg1[0]的地址是：' + str(id(arg1[0])), '内容是：' + str(arg1[0]))
-
 
 list1 = ['a', 'b']
 list2 = ['huli']
@@ -85,3 +77,55 @@ add(list1, list2)  # 公共运算
 print(f'公共运算符+号作用容器，会生成一个新容器，新容器的地址赋值给形参arg1，实参list1的地址不会变：{id(list1)}')
 
 # 2.2.1 参数传递方式之位置参数
+print('*' * 60)
+
+
+def func_site_and_keywords(a, b, c):
+    print(f'a={a},b={b},c={c}')
+
+
+func_site_and_keywords(1, 2, 3)
+
+# 2.2.2 参数传递方式之关键字参数
+# 注意：位置传参和关键字传参同时存在时，位置传参必须在关键字传参之前
+func_site_and_keywords(1, c=2, b=9)  # a=1,b=9,c=2
+
+
+# 2.2.3 参数传递方式之默认参数
+# 注意：有默认值的形参在调用时可传可不传，若传入实参，则以实参为准。
+def func_default(a, b, c='anpeng'):
+    print(f'a={a},b={b},c={c}')
+
+
+func_default(1, 2)  # a=1,b=2,c=anpeng
+
+
+# 2.2.4 参数传递方式之可变传递(包裹传递)：可以将多个参数打包传入
+# 使用 (*形参名) 时，不需要用关键字传参，参数传入后以元组的形式保存
+def func_packing(*args):
+    print(type(args), args)
+
+
+func_packing(1, 2, 'anpeng')  # <class 'tuple'> (1, 2, 'anpeng')
+
+
+# 使用 (**形参名) 时，需要使用关键字传参，参数传入后默认以字典的形式，形参名为传入字典的键。
+def func_packing_keyword(**args):
+    print(type(args), args)
+
+
+func_packing_keyword(a=(1, 2, 3), b={'a', 'huli'})  # <class 'dict'> {'a': (1, 2, 3), 'b': {'huli', 'a'}}
+func_packing_keyword(name='anpeng', age=25)
+
+
+# 2.2.5 参数传递方式之拆包传递(解包裹)
+# 将元组形式的参数按位置匹配传入，元组前需要加*
+def func_unpacking(a, b, c):
+    print(a, type(a), '\t', b, type(b), '\t', c, type(c))
+
+
+func_unpacking(*(23, 'anpeng', 12.5))  # 23 <class 'int'> 	 anpeng <class 'str'> 	 12.5 <class 'float'>
+
+# 将字典形式的参数按关键字来匹配，字典前需要加**
+func_unpacking(*(1, 2.5, 'anpeng'))  # 1 <class 'int'> 	 2.5 <class 'float'> 	 anpeng <class 'str'>
+func_unpacking(**{'a': 'anpeng', 'b': 25, 'c': 'huli'})
