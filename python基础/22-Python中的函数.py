@@ -158,13 +158,11 @@ print(func_add(1, 2, 89, 10, 8, 5.6))  # 115.6
 # 注意：函数名后不能加括号
 help(len)
 
-
 # 4.2 函数说明文档的位置和方法：说明文档在函数体第一行，并用三个双引号包裹。
 # 注意：若函数体内第一行没有说明文档，则会将函数定义的上一行的单行注释作为说明文档。
 def func_document():
     """this is an example of func_document"""
     print('func_document')
-
 
 help(func_add)  # 三引号回车后，可以使用:info_name:的形式提供更详细的函数信息。
 help(func_document)
@@ -178,11 +176,9 @@ help(func_document)
 # 需要在函数体内修改全局变量时，需要使用关键字global先声明这个全局变量，再对这个全局变量赋新值。
 var = 'anpeng'
 
-
 def update_global_var():
     global var
     var = 'Tom'
-
 
 print(var)
 update_global_var()
