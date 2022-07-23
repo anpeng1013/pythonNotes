@@ -21,6 +21,7 @@
 print('anpeng' + ' love huli.')  # 合并字符串
 print((1, 2) + (3, 6))  # 合并元组
 print(['anpeng', 'hello'] + ['Tom', 'alice'])  # 合并列表
+# print({1, 2, 3} + {'anpeng', 'hello'})  # +号不能合并集合
 
 # 2.运算符之*：乘法
 print('anpeng' * 3)
@@ -70,5 +71,6 @@ print()
 # 注意：start参数用来设置遍历数据的下标的起始值，默认为0
 str1 = 'anpeng love huli'
 for i in enumerate(str1):
-    print(i, end=' ')  # (0, 'a') (1, 'n') (2, 'p') (3, 'e') (4, 'n') (5, 'g') (6, ' ') (7, 'l') (8, 'o') (9, 'v') (10, 'e') (11, ' ') (12, 'h') (13, 'u') (14, 'l') (15, 'i')
+    print(i,
+          end=' ')  # (0, 'a') (1, 'n') (2, 'p') (3, 'e') (4, 'n') (5, 'g') (6, ' ') (7, 'l') (8, 'o') (9, 'v') (10, 'e') (11, ' ') (12, 'h') (13, 'u') (14, 'l') (15, 'i')
 print()
