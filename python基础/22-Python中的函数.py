@@ -94,14 +94,14 @@ print(f'公共运算符+号作用容器，会生成一个新容器，新容器�
 
 # 2.2.1 参数传递方式之位置参数
 print('-' * 60)
-def func_site_and_keywords(a, b, c):
-    print(f'a={a},b={b},c={c}')
+def func_site_and_keywords(aa, bb, cc):
+    print(f'a={aa},b={bb},c={cc}')
 
 func_site_and_keywords(1, 2, 3)
 
 # 2.2.2 参数传递方式之关键字参数
 # 注意：位置传参和关键字传参同时存在时，位置传参必须在关键字传参之前
-func_site_and_keywords(1, c=2, b=9)  # a=1,b=9,c=2
+func_site_and_keywords(1, cc=2, bb=9)  # a=1,b=9,c=2
 
 # 2.2.3 参数传递方式之默认参数
 # 注意：有默认值的形参在调用时可传可不传，若传入实参，则以实参为准。
