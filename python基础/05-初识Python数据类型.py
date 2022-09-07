@@ -30,7 +30,7 @@ print(type(var4))
 var5 = [1, 2, 3]
 print(type(var5))
 
-# tuple--元组，类似于不改变的数组
+# tuple--元组，类似于不能改变的数组
 var6 = (10, 20, 30)
 print(type(var6))
 
