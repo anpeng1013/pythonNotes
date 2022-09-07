@@ -37,6 +37,7 @@ print(hexadecimal)  # 打印结果：4095
 # python中使用bin()、oct()、hex()函数
 # 输出二进制、八进制、十六进制数
 print(bin(binary))  # 打印结果：0b111
+print(bin(12))  # 打印结果：0b1100
 print(oct(octonary))  # 打印结果：0o777
 print(hex(hexadecimal))  # 打印结果：0xfff
 
