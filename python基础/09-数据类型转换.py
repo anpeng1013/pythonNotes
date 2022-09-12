@@ -19,7 +19,7 @@
         tuple(s)：将序列s转换为一个元组。
         list(s)：将序列s转换为一个列表。
         set(s)：转换为可变集合。
-        dict(d)：创建一个字典。d必须是一个序列（key，value）元组。
+        dict(d)：创建一个字典。d必须是一个（key，value）元组序列。
 
 """
 # 1.int(x[,base])
