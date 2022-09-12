@@ -33,7 +33,7 @@ print(int(3.14159))
 # 若x为str，则base可有可无。str表示的须为整型，不能是如'3.14'的字符串。
 # print(int('3.14')) # ValueError: invalid literal for int() with base 10: '3.14'
 
-# 若base时，视为x为base进制数字，并将其转换为十进制数字。
+# 若有base时，则将x视为base进制数字，print函数直接打印其他进制数时，会将其转换成十进制数。
 print(int('111', 2))  # 7
 print(int('777', 8))  # 511
 print(int('fff', 16))  # 4095
