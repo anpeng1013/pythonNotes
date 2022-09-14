@@ -6,7 +6,7 @@
             …………
 
     循环控制：
-        break：终止整个循环
+        break：终止最内层的整个循环体
         continue：退出本次循环，继而执行下一个循环代码。
 
     for循环：
@@ -157,6 +157,8 @@ for i in var:
     if i == 'p':
         break # break时else中的代码不执行。
     print(i, end='\t')
+else:
+    print('anpeng')
 print()
 
 # 15.for……else循环控制之continue
@@ -165,4 +167,6 @@ for i in var:
     if i == 'p':
         continue # continue时,else中的代码要执行。
     print(i, end='\t')
+else:
+    print('anpeng')
 print()
