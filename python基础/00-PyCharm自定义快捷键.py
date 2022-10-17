@@ -21,7 +21,7 @@
 
     向上下左右选中--shift+上下左右箭头
 
-    Python console-- Alt+c  需要输入数据的console窗口，和调用Python console窗口
+    Python or debug console-- Alt+c  debug时进入debug console窗口输入数据，否则调用Python console窗口
     terminal-- Alt+f12
     project -- Alt + 1
     run 窗口-- Alt + 4  # 需要输入数据时，直接进入命令行输入。
