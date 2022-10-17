@@ -21,10 +21,10 @@ var_bytes = b'anpeng love huli'
 var_str = '安鹏'
 print(chr(var_bytes[0]))  # 'a' 一个字节， 字节串以字节为单位进行操作
 print(var_str[0])  # '安'包含多个字节， 字符串以字符为单位进行操作
-print(getsizeof(var_str[0])) # 字符串变量实际占用的内存大小
-print(len(var_str)) # 字符串变量中的字符个数
-print(getsizeof(var_bytes[0])) # 字节串变量实际占用的内存大小
-print(len(var_bytes)) # 字节串变量的具体值占用的字节数。
+print(getsizeof(var_str[0]))  # 字符串变量实际占用的内存大小
+print(len(var_str))  # 字符串变量中的字符个数
+print(getsizeof(var_bytes[0]))  # 字节串变量实际占用的内存大小
+print(len(var_bytes))  # 字节串变量的具体值占用的字节数。
 
 # 字节串的操作与字符串基本相同
 print(var_bytes[1::2])  # 字节串切片
@@ -32,8 +32,5 @@ print(var_bytes.find(b'en', 1))  # 字节串查找的子串也必须是字节串
 print(var_bytes.replace(b'an', b'An'))  # 字符串的修改
 bytes_list = var_bytes.split(b' ')  # 字节串用来分割的子串也必须是字节串
 print(bytes_list)
-var_bytes2 = b' '.join(bytes_list) # 字节串的拼接的子串也必须是字节串
+var_bytes2 = b' '.join(bytes_list)  # 字节串的拼接的子串也必须是字节串
 print(var_bytes2)
-
-
-
