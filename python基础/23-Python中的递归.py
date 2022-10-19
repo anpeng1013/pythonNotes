@@ -28,7 +28,7 @@ def quick_sort(num_list):
         return num_list
     else:
         high = len(num_list) - 1
-        mid = int(high / 2)
+        mid = high // 2  # //为整除，无小数，/为浮点除法，有小数
         left = []
         right = []
         mid_value = num_list.pop(mid)  # 选了基准元素后，一定要在遍历这数组前删除这个元素，否则
