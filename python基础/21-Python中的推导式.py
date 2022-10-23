@@ -1,7 +1,8 @@
 """
-    # 列表推导式：用一个表达式创建一个有规律的列表或控制一个有规律的列表。列表推导式又叫列表生成式
-    # 字典推导式：快速合并列表为字典或提取字典中目标数据。
-    # 集合推导式：注意集合有数据去重功能
+    # 列表推导式：list_var=[i for i in range(10)] 用一个表达式创建一个有规律的列表或控制一个有规律的列表。列表推导式又叫列表生成式
+    # 字典推导式：dict_var={i : i**2 for i in range(10)} 快速合并列表为字典或提取字典中目标数据。
+    # 集合推导式：set_var={i**2 for in [1, 2, 5, 3] } 注意集合有数据去重功能
+    # 元组 ?  :   注意！使用tuple_var=(i for i in range(10))这种形式得到的是生成器，不是元组推导式
 """
 # 1.列表推导式
 # 需求：创建一个0-10的列表
@@ -66,3 +67,20 @@ print(count1)
 list1 = [1, 5, 9, 5]
 set1 = {i ** 2 for i in list1}
 print(set1)  # {81, 1, 25} 集合去重且无序。
+
+# 6.元组生成器
+# 需求：创建一个元组，数据为1-100中的素数
+from math import sqrt
+
+def is_prime(x):
+    if 0 < x < 4:
+        return True
+    else:
+        for i in range(2, int(sqrt(x)) + 1):
+            if x % i == 0:
+                return False
+        return True
+
+print(is_prime(73))
+tuple_var = tuple(i for i in range(1, 101) if is_prime(i))
+print(tuple_var)

@@ -9,6 +9,10 @@
 语法：lambda 参数列表：表达式
 注意：lambda表达式的参数可有可无，函数的参数在lambda表达式中完全适用
     lambda表达式能接收任何数量的参数但只能返回一个表达式的值
+
+lambda经典面试题：
+    result=[lambda x: x+i for i in range(10)]
+    print(result[0](10)) # 结果为 19
 """
 
 
@@ -27,12 +31,10 @@ expression = lambda: 100
 print(expression)  # 匿名函数的内存地址
 print(expression())  # 匿名函数返回值100
 
-
 # 2.例子：计算a + b
 # 函数实现
 def add(a, b):
     return a + b
-
 
 result = add(1, 2)
 print(result)
@@ -75,3 +77,7 @@ print(students)
 # 按age的值降序排序
 students.sort(key=lambda x: x['age'], reverse=True)
 print(students)
+
+# 5.lambda的经典面试题
+result = [lambda x: x + i for i in range(10)]
+print(result[0](10))
