@@ -142,9 +142,10 @@ print(oct(65535))
 print(bin(12))
 print(bin(65535))
 
-
 # 16.map(function,iterator,...)
 # 并行使用来自iterator的参数，迭代调用function，当最短的iterator耗尽时停止，并返回一个迭代器，迭代器的每个元素是每次调用function的返回结果。
+
+
 def function(x, y, z):
     return [x, y, z]
 

@@ -11,7 +11,7 @@
             2.使用函数
                 函数名(参数)-参数可有可无
                 必须先定义后使用。
-            注意：定义不同函数是，标准格式是--间隔两行。
+            注意：定义不同函数时，默认标准格式是--前后间隔两行，可以在setting->editor->Code Style->python->Around top-level classes and functions中设置为一行。
 
         参数：参数可有可无。
                 参数传递内容：传递的都是地址，即形参地址和实参地址相同。
@@ -105,8 +105,8 @@ func_site_and_keywords(1, cc=2, bb=9)  # a=1,b=9,c=2
 
 # 2.2.3 参数传递方式之默认参数
 # 注意：有默认值的形参在调用时可传可不传，若传入实参，则以实参为准。
-def func_default(a, b, c='anpeng'):
-    print(f'a={a},b={b},c={c}')
+def func_default(arg1, arg2, arg3='anpeng'):
+    print(f'a={arg1},b={arg2},c={arg3}')
 
 func_default(1, 2)  # a=1,b=2,c=anpeng
 
@@ -126,9 +126,8 @@ func_packing_keyword(name='anpeng', age=25)
 
 # 2.2.5 参数传递方式之拆包传递(解包裹)
 # 将元组形式的参数按位置匹配传入，元组前需要加*
-def func_unpacking(a, b, c):
-    print(a, type(a), '\t', b, type(b), '\t', c, type(c))
-
+def func_unpacking(arg4, arg5, arg6):
+    print(arg4, type(arg4), '\t', arg5, type(arg5), '\t', arg6, type(arg6))
 
 func_unpacking(*(23, 'anpeng', 12.5))  # 23 <class 'int'> 	 anpeng <class 'str'> 	 12.5 <class 'float'>
 
@@ -141,7 +140,6 @@ func_unpacking(**{'a': 'anpeng', 'b': 25, 'c': 'huli'})
 def return_num():
     return 100, 200
 
-
 num1, num2 = return_num()  # 对元组进行拆包
 print(num1, num2)
 
@@ -153,7 +151,6 @@ print(dict1[a], dict1[b])
 # 方法一：借助第三个变量
 a, b = 10, 99
 print(a, b)
-c = 0
 c = a
 a = b
 b = c
@@ -180,14 +177,11 @@ def func_add(*args):
         result += i
     return result
 
-
 print(func_add(1, 2, 89, 10, 8, 5.6))  # 115.6
-
 
 # 3.2 函数多返回值
 def fun_multiple_return():
     return 1, 2, 3  # 返回多个数据的时候，默认是元组类型。
-
 
 # return后面可以连接列表、元组或字典，以返回多个值。
 
