@@ -22,6 +22,8 @@
     向上下左右选中--shift+上下左右箭头
 
     Python or debug console-- Alt+c  debug时进入debug console窗口输入数据，否则调用Python console窗口
+    在Python Console中，若需输入多条代码再运行，可以使用shift + enter，最后使用enter执行
+
     terminal-- Alt+f12
     project -- Alt + 1
     run 窗口-- Alt + 4  # 需要输入数据时，直接进入命令行输入。

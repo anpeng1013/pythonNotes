@@ -9,6 +9,23 @@
     1.体验内置函数：
         abs()函数可以完成对数字求绝对值计算。
         round()函数可以完成对数字的四舍五入计算
+    2.内置高阶函数：
+        map(function, sequence)：将传入的函数变量function作用到sequence变量的每个元素中，并将结果组成的新列表(python2)/迭代器(python3)返回。
+              若有多个sequence，则并行使用来自多个sequence的参数，迭代调用function，当最短的sequence耗尽时停止，并返回一个迭代器，
+              迭代器的每个元素是每次调用function的返回结果.
+
+        reduce(function,sequence)：其中function必须有两个参数。第一次，function取序列中前两个元素进行计算，计算结果继续和序列sequence中的下一个元素做运算。
+              一共进行n-1(n为序列的长度)次计算，返回第n-1次计算结果。此函数可用做：累加、累积等操作。
+
+        filter(function, sequence)：用于过滤序列，过滤符合function函数的元素，返回一个filter可迭代对象。可以使用list()转换为list对象。
+
+    3.闭包函数:
+        定义：当一个函数的返回值是另一个函数，而返回的那个函数如果调用了其父函数内部的其它变量，如果返回的的这个函数在外部被执行，就产生了闭包。
+        作用：使函数外部能够调用函数内部定义的变量。
+        注意：闭包中被内部函数引用的变量，不会因为外部函数结束而被释放掉，而是一直存在内存中，直到内部函数调用结束。
+
+        判断是否为闭包函数：
+        函数名.__closure__ 在函数是闭包函数时，返回一个cell元素；不是闭包时，返回一个None.
 
 """
 
@@ -69,3 +86,29 @@ print(result)  # <filter object at 0x0000029AEF059700> 返回的可迭代对象f
 for i in result:  # 迭代器不管是for循环遍历操作，还是list()数据类型转换为列表操作，都会访问一次数据，访问一次后，迭代器中的数据索引消失，无法再获取值。
     # 若要for循环遍历filter对象，则需注释上一行list转换为列表的代码。
     print(i, end='\t')
+print()
+
+# 4.1 闭包函数实例
+def outer_function():
+    var = 'anpeng'
+
+    def inner_function():
+        print(var)
+
+    return inner_function
+
+var_function = outer_function()  # inner_function
+var_function()
+
+# 4.2 判断是否为闭包函数---函数名.__closure__ 在函数是闭包函数时，返回一个cell元素；不是闭包时，返回一个None.
+name = 'anpeng love huli'
+
+def outer_function2():
+    def inner_function2():
+        print(name)
+
+    return inner_function2
+
+var_function2 = outer_function2()
+print(var_function2())  # None
+print(var_function.__closure__)  # (<cell at 0x000002227F1BFFA0: str object at 0x000002227F1D1370>,)

@@ -32,7 +32,7 @@ def quick_sort(num_list):
         left = []
         right = []
         mid_value = num_list.pop(mid)  # 选了基准元素后，一定要在遍历这数组前删除这个元素，否则
-        # 当第一轮比较大小时，若right数组没有元素，left数组和原数组一样，陷入死循环
+        # 当一轮比较大小时，若right数组没有元素，left数组和原数组一样，陷入死循环
         for i in range(len(num_list)):
             if num_list[i] > mid_value:
                 right.append(num_list[i])

@@ -78,6 +78,16 @@ print(students)
 students.sort(key=lambda x: x['age'], reverse=True)
 print(students)
 
-# 5.lambda的经典面试题
-result = [lambda x: x + i for i in range(10)]
-print(result[0](10))
+# 5.lambda的经典面试题。
+result = [lambda x: x + i for i in range(10)]  # 结合了变量作用域、列表推导式、lambda匿名函数和函数运行机制的题目
+"""
+    1.首先，这是一个列表推导式，生成的是lambda匿名函数列表，即列表中的元素都是匿名函数。
+    2.当result = [lambda x: x + i for i in range(10)]语句执行时，相当于在result列表中定义了十个匿名函数。
+    3.Python中函数运行机制：遇到函数定义，直接将函数加载到内存而不会执行函数代码，只有当函数调用才会执行函数代码。
+    4.所以，这里只是生成了匿名函数的列表而不会实际执行函数代码，也就是说暂时没有生成结果。函数内部的i依然变量，并没有具体的值，因为函数没有执行。
+        只有当函数调用时才会实际执行函数代码，result[0]提取列表中的第一个匿名函数，在后面加上括号并传入参数result[0](10)才会实际调用函数，
+        此时开始执行函数代码，才会去找对应的变量的值。
+    5.Python中变量的作用域：本地作用域（local）-> 外围作用域
+"""
+for i in range(len(result)):
+    print(result[i](10), end='\t')
