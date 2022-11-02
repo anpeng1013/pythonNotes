@@ -9,7 +9,12 @@
     1.体验内置函数：
         abs()函数可以完成对数字求绝对值计算。
         round()函数可以完成对数字的四舍五入计算
-    2.内置高阶函数：
+
+    2.函数式编程：
+        定义：可以将函数作为一个参数，传入另一函数中，传入时只要需要写函数名，不用加括号。
+        作用：对处理的数据可以采取不同的函数进行，可以减少函数定义，解决代码臃肿问题。
+
+    3.内置高阶函数：
         map(function, sequence)：将传入的函数变量function作用到sequence变量的每个元素中，并将结果组成的新列表(python2)/迭代器(python3)返回。
               若有多个sequence，则并行使用来自多个sequence的参数，迭代调用function，当最短的sequence耗尽时停止，并返回一个迭代器，
               迭代器的每个元素是每次调用function的返回结果.
@@ -19,19 +24,23 @@
 
         filter(function, sequence)：用于过滤序列，过滤符合function函数的元素，返回一个filter可迭代对象。可以使用list()转换为list对象。
 
-    3.闭包函数:
-        定义：当一个函数的返回值是另一个函数，而返回的那个函数如果调用了其父函数内部的其它变量，如果返回的的这个函数在外部被执行，就产生了闭包。
-        作用：使函数外部能够调用函数内部定义的变量。
-        注意：闭包中被内部函数引用的变量，不会因为外部函数结束而被释放掉，而是一直存在内存中，直到内部函数调用结束。
+    4.闭包函数:
+        定义：函数A的内部定义了另一个函数B，如果函数B引用了函数A范围内的变量，那么内部函数B就被认为是闭包(Closure)。
+        判断：函数名.__closure__ 在函数是闭包函数时，返回一个cell元素；不是闭包时，返回一个None.
+        作用：使函数外部能够引用函数内部定义的变量。
+        注意：
+            1).闭包中被内部函数引用的变量，不会因为外部函数调用结束而被释放掉，而是保存在编译后的内部函数定义体中，直到程序结束。
+            2).外部函数A的返回值，可以返回内部函数B，也可以返回其他值。
+            3).内部函数B只能引用外部函数A中的变量，而不能对其赋新的地址值。
+                对于不可变的类型：数字、字符串、元组等同于不能修改变量的值。
+                对于可变类型：列表、字典、集合，则可以修改容器内部的值，因为容器变量地址并没有被修改。
 
-        判断是否为闭包函数：
-        函数名.__closure__ 在函数是闭包函数时，返回一个cell元素；不是闭包时，返回一个None.
 
 """
 
 # 1.体验内置函数
-print(abs(-10))
-print(round(1.2), round(1.9))
+print(abs(-10))  # abs()返回参数的绝对值
+print(round(1.2), round(1.9))  # round()对参数进行四舍五入，并返回
 
 # 2.体验高阶函数（函数式编程）
 # 需求：要求对数字进行任意操作后进行计算
@@ -88,27 +97,108 @@ for i in result:  # 迭代器不管是for循环遍历操作，还是list()数据
     print(i, end='\t')
 print()
 
-# 4.1 闭包函数实例
-def outer_function():
-    var = 'anpeng'
+# 4.1 闭包函数作为返回值。 闭包的特点就是内部函数引用了外部函数中的变量。
+def outer_function(x):  # 返回闭包函数
 
-    def inner_function():
-        print(var)
+    def inner_function(y):
+        return x + y
 
+    print(inner_function.__closure__)  # cell对象，是闭包。
     return inner_function
 
-var_function = outer_function()  # inner_function
-var_function()
+var_function = outer_function(10)  # inner_function
+print(var_function(13))  # 23
 
-# 4.2 判断是否为闭包函数---函数名.__closure__ 在函数是闭包函数时，返回一个cell元素；不是闭包时，返回一个None.
-name = 'anpeng love huli'
+def outer_function1():  # 不返回闭包函数
+    var1 = 'anpeng love huli'
 
+    def inner_function1():
+        print(var1)
+
+    inner_function1()
+    print(inner_function1.__closure__)  # cell对象，只要内部函数引用了外部(非全局)变量就是是闭包。
+    return 'anpeng really love huli'
+
+print(outer_function1())
+
+# 4.2 闭包函数只能引用，而不能修改外部(非全局)变量的值。
 def outer_function2():
+    var2 = 0
+
     def inner_function2():
-        print(name)
+        var2 = 1
+        print(var2)
 
-    return inner_function2
+    print(var2)
+    inner_function2()
+    print(var2)
 
-var_function2 = outer_function2()
-print(var_function2())  # None
-print(var_function.__closure__)  # (<cell at 0x000002227F1BFFA0: str object at 0x000002227F1D1370>,)
+outer_function2()  # 0 1 0 虽然在外部函数中定义一个变量var2，但是其不会改变外部函数中的局部变量的地址
+
+# 4.2 闭包函数的作用
+# 4.2.1 保留上次运行结果--计算均值
+# 通过定义average类实现
+class Average:
+    def __init__(self):
+        self.series = []
+
+    def __call__(self, new_value):
+        self.series.append(new_value)
+        total = sum(self.series)
+        return total / len(self.series)
+
+average = Average()
+print(average(1), average(2), average(9))  # 1.0  1.5  4.0
+
+# 通过闭包函数实现
+def compute_average():
+    series = []
+
+    def averager(new_value):
+        series.append(new_value)  # 此处并没对外部列表series变量赋新的地址值，只是对列表添加元素。
+        total = sum(series)
+        return total / len(series)
+
+    return averager
+
+average = compute_average()
+print(average(4), average(8), average(3))  # 4.0  6.0  5.0
+
+# 闭包函数实现的优化：nonlocal(自由变量)的使用
+# 上面例子中，把所有值存储在历史列表中，在每次调用average时都要调用sum求和，更好的方式是
+# 只存储目前的总值和元素的个数，然后使用这两个数计算均值。
+def compute_average1():
+    count = 0
+    total = 0
+
+    def averager(new_value):
+        nonlocal count, total
+        count += 1  # 因为数字是不可变类型，若不使用nonlocal声明为自由变量，则会隐式创建新的count局部变量，就没有引用外部的count形成闭包。
+        total += new_value
+        return total / count
+
+    return averager
+
+average = compute_average1()
+print(average(8), average(7), average(3))  # 8.0  7.5  6.0
+
+# 4.2.2 通过外部函数不同的局部变量，得到不同的结果。类似于4.1中的outer_function
+def make_filter(keep):
+    def the_filter(file_name):
+        file = open(file_name)
+        lines = file.readlines()
+        file.close()
+        filter_doc = [i for i in lines if keep in i]
+        return filter_doc
+
+    return the_filter
+
+# 取出文件"25-result.txt"中含有"huli"关键字的行
+filter_huli = make_filter('huli')
+filter_result = filter_huli("25-result.txt")
+print(filter_result)
+
+# 取出文件"25-result.txt"中含有"anpeng"关键字的行
+filter_anpeng = make_filter('anpeng')
+filter_result = filter_anpeng("25-result.txt")
+print(filter_result)
