@@ -87,7 +87,15 @@ result = [lambda x: x + i for i in range(10)]  # 结合了变量作用域、列�
     4.所以，这里只是生成了匿名函数的列表而不会实际执行函数代码，也就是说暂时没有生成结果。函数内部的i依然变量，并没有具体的值，因为函数没有执行。
         只有当函数调用时才会实际执行函数代码，result[0]提取列表中的第一个匿名函数，在后面加上括号并传入参数result[0](10)才会实际调用函数，
         此时开始执行函数代码，才会去找对应的变量的值。
-    5.Python中变量的作用域：本地作用域（local）-> 外围作用域
+    5.Python中变量的作用域：本地作用域（local）-> 嵌套作用域（enclosing）-> 全局作用域（global）-> 内建作用域（built-in）
+    6.Python中循环、分支、异常捕获代码块中定义的变量，在被调用之后的全局依旧能被访问，相当于全局变量。所以在列表推导式中的for循环结束后，
+        i的变量为9,列表中定义的十个lambda匿名函数中的i此时还没被赋值，只要当函数被调用时，才会去找变量i的值。
 """
+for i in range(len(result)):
+    print(result[i](10), end='\t')  # 全是19
+
+# 若要实现每个函数中的i呈现递增效果，可以在lambda表达式的参数中，使用默认参数，在构建函数的过程中，将i值赋值进去。
+print()
+result = [lambda x, i=i: x + i for i in range(10)]
 for i in range(len(result)):
     print(result[i](10), end='\t')

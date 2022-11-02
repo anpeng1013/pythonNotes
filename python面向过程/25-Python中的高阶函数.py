@@ -182,7 +182,7 @@ def compute_average1():
 average = compute_average1()
 print(average(8), average(7), average(3))  # 8.0  7.5  6.0
 
-# 4.2.2 通过外部函数不同的局部变量，得到不同的结果。类似于4.1中的outer_function
+# 4.2.2 通过外部函数传入不同的参数，得到不同的结果。类似于4.1中的outer_function
 def make_filter(keep):
     def the_filter(file_name):
         file = open(file_name)
