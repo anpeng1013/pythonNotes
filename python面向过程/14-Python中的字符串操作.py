@@ -194,17 +194,17 @@ print('anpeng love huli'.startswith('anpeng'))
 print('anpeng love huli'.endswith('huli'))
 
 # 字符串判断是否全部为英文字母
-print('hello huli'.isalpha()) # False 有空格
-print('anpeng'.isalpha()) # True
+print('hello huli'.isalpha())  # False 有空格
+print('anpeng'.isalpha())  # True
 
 # 字符串判断是否全部为数字
-print('0123456789'.isdigit()) # True
-print('abc124'.isdigit()) # False
+print('0123456789'.isdigit())  # True
+print('abc124'.isdigit())  # False
 
 # 字符串判断是否全部为空格
-print('  '.isspace()) # True
-print('hello world'.isspace()) # False
+print('  '.isspace())  # True
+print('hello world'.isspace())  # False
 
 # 字符串判断是否数字或字母或组合
-print('abc124'.isalnum()) # True
-print('anpeng 123'.isalnum()) # False
+print('abc124'.isalnum())  # True
+print('anpeng 123'.isalnum())  # False

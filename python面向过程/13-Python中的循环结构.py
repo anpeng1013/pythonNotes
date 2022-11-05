@@ -155,7 +155,7 @@ else:  # continue时,else中的代码要执行。
 print('for……else循环控制之break...........................')
 for i in var:
     if i == 'p':
-        break # break时else中的代码不执行。
+        break  # break时else中的代码不执行。
     print(i, end='\t')
 else:
     print('anpeng')
@@ -165,7 +165,7 @@ print()
 print('for……else循环控制之continue........................')
 for i in var:
     if i == 'p':
-        continue # continue时,else中的代码要执行。
+        continue  # continue时,else中的代码要执行。
     print(i, end='\t')
 else:
     print('anpeng')

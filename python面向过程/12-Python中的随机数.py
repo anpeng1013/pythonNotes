@@ -10,4 +10,4 @@ import random
 import sys
 
 num = random.randint(0, 10)
-sys.stdout.write(str(num)) # 相当于print(num)
+sys.stdout.write(str(num))  # 相当于print(num)

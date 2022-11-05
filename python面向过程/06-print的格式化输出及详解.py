@@ -85,7 +85,7 @@ b = 'love'
 print(a, b)  # 直接打印多个对象
 print('an''peng')  # 直接打印多个字符串，中间可以不要逗号，但打印结果没有空格
 print(13, 14, sep='+')  # 修改分隔符
-print('an''peng', end=' love huli forever\n') # 修改结束符
-f = open("06-print输出文件.txt", 'a') # 向指定文件中打印内容。
+print('an''peng', end=' love huli forever\n')  # 修改结束符
+f = open("06-print输出文件.txt", 'a')  # 向指定文件中打印内容。
 print("ap love huli forever", "you known?", sep="--", end="...\n", file=f)
 f.close()

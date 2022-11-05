@@ -7,9 +7,8 @@
 # 1.元组的定义
 tuple1 = (1, 2, 2, 'anpeng')  # 元组数据可重复,可不同类型
 tuple2 = (1,)  # 单个数据应该加逗号
-tuple3 = ((1))  # 只有一个数据时，多重括号都会被忽略
-tuple4 = ([1],)  # 元组中的元素是任意类型。如果不加逗号，则外层的圆括号会被忽略。
-print(type(tuple1), type(tuple2), type(tuple3), type(tuple4))  # <class 'tuple'> <class 'tuple'> <class 'int'> <class 'list'>
+tuple3 = ([1],)  # 元组中的元素是任意类型。如果不加逗号，则外层的圆括号会被忽略。
+print(type(tuple1), type(tuple2), type(tuple3))
 
 # 2.元组的查找(元组不支持修改，只查找)
 # 2.1 元组查找之下标索引
@@ -27,7 +26,7 @@ print(len(tuple1))  # 4
 
 # 3.元组的修改
 # 元组内的直接数据如果修改，则立即报错！ 但是，如果元组里面有列表，修改列表中的数据则是可以的。慎用！
-del tuple2, tuple3, tuple4
+del tuple2, tuple3
 tuple2 = (1, 2, 3, ['anpeng'])
 tuple2[3][0] = 'anpeng love huli'
-print(tuple2) # 元组中的列表数据是可以修改的
+print(tuple2)  # 元组中的列表数据是可以修改的

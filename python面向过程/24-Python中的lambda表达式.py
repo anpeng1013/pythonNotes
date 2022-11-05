@@ -26,7 +26,7 @@ print(function)
 print(function())
 
 # lambda表达式 匿名函数
-expression = lambda: 100
+expression = lambda: 100  # 正常情况下，不推荐将lambda表示式赋值给一个变量
 
 print(expression)  # 匿名函数的内存地址
 print(expression())  # 匿名函数返回值100

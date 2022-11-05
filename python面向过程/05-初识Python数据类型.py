@@ -41,4 +41,3 @@ print(type(var7))
 # dict--字典，无重复键值对元素的集合
 var8 = {'name': "anpeng", 'age': 25}
 print(type(var8))
-
