@@ -41,6 +41,12 @@
         2.提交并推送commit and push--Alt+shift+C
         3.确认推送push--Alt+P
 
+        git文件名的颜色
+            未加入git---红色
+            加入到git---绿色
+            提交到本地---蓝色
+            推送到远程---无色
+
     删除当前行：Ctrl + Y
     复制当前行：Ctrl + C
     重复当前行：Ctrl + D

@@ -33,35 +33,47 @@
                     全部为这个符号的Unicode码。
 
 2.文件的基本操作
-    打开模式：使用open(file_name, mode, encoding)，打开一个已经存在的文件，或者创建一个新文件。file()和open()函数功能和用法完全相同。
-            name：是要打开的目标文件名的字符串（可以包含文件所在的具体路径）
-            mode：设置打开文件的访问模式-只读、写入、追加等，默认为只读r。
-            encoding：文件编码方式，通常为utf-8
+    打开模式：使用open(file, mode='r', buffering=None, encoding=None, errors=None, newline=None, closefd=True)打开file文件，
+                file()和open()函数功能和用法完全相同。
 
-            mode    description
-              r     以只读方式打开文件。文件的指针将会放在文件的开头，此为默认模式。若文件不存在则报错。
-              rb    以二进制格式打开一个文件用于只读，文件指针在开头。若文件不存在则报错。
-              r+    以读和写的方式打开文件，文件指针在开头。若文件不存在则报错。
-              rb+   以二进制格式打开文件用于读和写，文件指针在开头。若文件不存在则报错。
+            file：要打开的目标文件的字符串（可以包含文件所在的具体路径）
+            mode：一个字符串，用于设置打开文件的访问模式-只读、写入、追加等，默认为只读r，详情见下方英文描述。
+            buffering：设置缓冲区策略，默认为-1，不需要修改。
+            encoding：文件编码方式。若不指定，则会通过locale.getpreferredencoding(False)获取，返回值根据windows系统所设置的地区变化。
+                      例如，地区为中国大陆(简体中文)时，返回值为cp936。cp936其实就是GBK，因为IBM在code page文档中将GBK放在了第936页
+            其余参数：使用默认值即可，不用修改。
 
-              w     以只能写入的方式打开文件，如果该文件已存在则打开文件，并从开头进行编辑，即原有内容会被删除；若文件不存在则新建文件。
-              wb    以二进制格式打开文件只用于写入，如果该文件已存在则打开文件，并从开头进行编辑，即原有内容会被删除；若文件不存在则新建文件。
-              w+    打开一个文件用于读写，如果该文件已存在则打开文件，并从开头进行编辑，即原有内容会被删除；若文件不存在则新建文件。
-              wb+   以二进制格式打开文件用于读写，如果该文件已存在则打开文件，并从开头进行编辑，即原有内容会被删除；若文件不存在则新建文件。
+            mode      Meaning
+            --------- ---------------------------------------------------------------
+            'r'       open for reading (default)
+            'w'       open for writing, truncating the file first
+            'x'       create a new file and open it for writing
+            'a'       open for writing, appending to the end of the file if it exists
+            'b'       binary mode
+            't'       text mode (default)
+            '+'       open a disk file for updating (reading and writing)
+            'U'       universal newline mode (deprecated and removed)
+            **** 注意：1、四个文件编辑主模式：r, w, x, a
+                         * 以r主访问模式打开文件时，若文件不存在都会报错。w、a、x模式文件不存在会新建。
+                         * 以r、w、x主访问模式打开文件时，文件指针都在开头，只有以a主访问模式打开文件时，文件指针才在末尾。
+                         * 以w主访问模式打开文件时，原本内容会被清空。
+                      2、两个文件内容模式：t(text mode) 和 b(binary mode)
+                         * text mode 以文本模式打开文件，读取文件时返回的是字符串。字符串的编码方式默认是本地编码方式，
+                                     通过locale.getpreferredencoding()可以获得，Windows10中是cp936,其实就是GBK。
+                         * binary mode 以二进制模式打开文件，读取文件时返回的字节串。
+                      3、四个文件编辑主模式都可以和两个文件内容模式搭配，比如'wb'(二进制写入)、'rt'(文本只读，这里的t可以省略，可只写'r')
+                      4、'+'mode表示可读可写，需要与四大文件编辑模式组合使用，但文件指针的位置依旧按照四大主模式。
+                      5、'x' mode，创建一个新文件用于写入。
 
-              a     打开一个文件用于追加内容，文件指针在末尾，新写入的内容会被写入已有内容之后。若文件不存在则新建文件。
-              ab    以二进制追加模式打开文件，文件指针在末尾，文件指针在末尾，新写入的内容会被写入已有内容之后。若文件不存在则新建文件。
-              a+    以读和追加的模式打开文件，文件指针在末尾，新写入的内容会被写入已有内容之后。若文件不存在则新建文件。
-              ab+   以二进制读和追加的模式打开，文件指针在末尾，新写入的内容会被写入已有内容之后。若文件不存在则新建文件。
-
-            **** 注意：以r主访问模式打开文件时，若文件不存在都会报错。
-                      以r、w主访问模式打开文件时，文件指针都在开头，只有以a主访问模式打开文件时，文件指针才在末尾。
+            encoding：Python区分文件内容的打开方式，要么以文本模式，要么以二进制字节串模式。encoding只针对text mode文本模式。
+            *** 在Python中可以使用charset-normalizer(字符集规范器)检测来自网络的文件的编码方式。
+                而对于本地创建的文件，Python会使用locale.getpreferredencoding()获取底层操作系统的编码方式进行解码文件。
 
     文件指针：
         1、以r、w主访问模式打开文件时，文件指针都在开头，只有以a主访问模式打开文件时，文件指针才在末尾。
         2、不管是文件读取，还是写入，文件指针都会跟着向后移动相应的距离。
         3、file.tell()：返回文件指针当前位置，该位置只能是以字节为单位，起始为0
-        4、file.seek(offset[, whence]):
+        4、file.seek(offset[, whence])：用来移动文件指针。
             file：文件对象
             whence：作为可选参数，用于指定文件指针要放置的位置，该参数的参数值有3个选择：0 代表文件头（默认值）、1 代表当前位置、2 代表文件尾
             offset：表示相对于whence位置文件指针的偏移量，偏移量也是以字节为单位的！！ 正数表示向后偏移，负数表示向前偏移。
@@ -72,26 +84,42 @@
     读取数据：
         read()：文件对象.read(num)，num表示要从文件中读取的数据长度，单位默认是字节（若要以字符为单位，需要在打开文件函数的参数中，
                 设置编码格式encoding=’utf-8‘）如果没有传入num，则读取文件所有数据。
-
         readlines()：可以按照行的方式把整个文件的内容进行一次性读取，并返回一个列表，文件中的一行为列表中的一个元素。
-
         readline()：一次读取文件的一行内容。
 
-    写入数据：
+            *** 注意：若以r主访问模式打开的必须是已存在的文件！否则会报错
+                    ！！！以r只读模式打开的文件存在中文时，一定要使用charset-normalizer中detect方法检查文件的编码方式。
+                    charset-normalizer是chardet的升级版，是conda环境的集成模块，不需要安装。而chardet需要安装。usage：见2.1
 
+    写入数据：
+        write(string)：文件对象.write(string/bytes)，string表示要写入文件的字符串。bytes表示字节串，仅适用于二进制打开的文件。
+        writelines(list)：list表示要写入文件的字符串列表，需要注意的是，writelines函数向文件中写入多行数据时，不会自动添加换行符。
+
+            *** 注意：不管是读取文件还是写入文件，都依赖于文件指针的当前位置。不同的打开方式将会决定文件读取和写入的结果。
+                 例如，以a+(可读可追加)模式打开文件，文件指针在末尾，此时读取文件会从末尾开始读取，从而读不到任何内容。
 
     关闭文件：close()
-    注意：可以只打开和关闭文件，不进行任何读写操作，但是比较占内存。
+        注意：可以只打开和关闭文件，不进行任何读写操作，但是比较占内存。
 
 3.文件备份
 4.文件和文件夹的操作
 
 """
 
+from charset_normalizer import detect
+import locale
+
 # 1 读取文件数据
+# 1.1 检测文件的编码方式
+def check_charset(file_name):
+    with open(file_name, 'rb') as f:  # 使用with语句，可以不用手动关闭文件
+        data = f.read()
+        charset = detect(data)['encoding']
+    return charset
+
 # 1.1 read(num)
 print('-' * 20 + 'read(num)' + '-' * 20)
-r_file = open("26-Python中的文件操作.txt", encoding='utf-8')  # 默认以'r'只读方式打开文件
+r_file = open("26-Python中的文件读取.txt", encoding='utf-8')  # 默认以'r'只读方式打开文件
 result = r_file.read(2)  # 默认单位为字节，若要以字符为单位进行读取，设置文件的编码方式，如encoding=‘utf-8’
 print(result, r_file.tell())  # 安鹏 6 说明utf-8中’安鹏‘这两个汉字占三个字节，utf-8中大多数汉字占三个字节。
 
@@ -101,21 +129,40 @@ print(result, r_file.tell())  # is studying the operation of file in python 50 �
 r_file.seek(0)  # offset非0时，文件必须以二进制打开，这里的r_file以utf-8格式打开，offset只能是0，可选参数whence默认为0
 # whence=0文件开头，whence=1当前位置，whence文件末尾。
 result = r_file.read()
-print(result, r_file.tell())  # 安鹏 is studying the operation of file in python 50
+print(result, r_file.tell())
 r_file.close()  # 关闭文件
 
 # 1.2 readlines()
 print('-' * 20 + 'readlines()' + '-' * 20)
-r_file = open('26-Python中的文件操作.txt')  # 不指定打开文件的编码方式为utf-8时，中文显示会出现乱码
+r_file = open('26-Python中的文件读取.txt', encoding='utf-8')  # 不指定打开文件的编码方式为utf-8时，中文显示会出现乱码，甚至报错
 result = r_file.readlines()
 print(result)
 r_file.close()
 
 # 1.3 readline()
 print('-' * 20 + 'readline()' + '-' * 20)
-r_file = open('26-Python中的文件操作.txt')
+r_file = open('26-Python中的文件读取.txt', encoding='utf-8')
 first_line = r_file.readline()
 print(f'第一行内容：{first_line}')  # 打印文件一样内容时，文件一行的末尾有换行符，会换行一次，而print函数默认以换行结束，所以会换行两次。
 second_line = r_file.readline()
 print(f'第二行内容：{second_line}')
 r_file.close()
+
+# 2.文件写入
+# 2.1 write写入字符串
+print('-' * 20 + 'write写入字符串' + '-' * 20)
+w_file = open('26-Python中的文件写入.txt', 'w+')  # 以w主访问模式打开文件，文件内容被清空，文件指针在开头
+w_file.write('安鹏 love huli very much')  # 写入字符串后文件指针移动到文件末尾
+w_file.seek(0, 0)  # 移动文件指针到开头进行读取
+context = w_file.readline()
+w_file.close()
+print(context)
+
+# 2.2 write写入字节串
+print('-' * 20 + 'write写入字节串' + '-' * 20)
+w_file = open('26-Python中的文件写入.txt', 'wb+')  # 需要写入字节串时，必须以二进制方式打开文件
+w_file.write(b'anpeng love huli')
+w_file.seek(0, 0)  # 移动文件指针到开头进行读取
+context = w_file.read()
+w_file.close()
+print(context)
