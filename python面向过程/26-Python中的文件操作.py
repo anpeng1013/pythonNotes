@@ -102,12 +102,20 @@
         注意：可以只打开和关闭文件，不进行任何读写操作，但是比较占内存。
 
 3.文件备份
+    需求：用户输入当前目录下任意文件名，程序完成对该文件的备份功能。(备份文件名为xx[备份]后缀，例如：26-Python中的文件读取.txt)。
+    步骤：
+        1、接收用户输入的文件名
+        2、规划备份文件名
+        3、备份文件写入数据。
+    作用：避免文件被误删除和误修改。
+
 4.文件和文件夹的操作
 
 """
 
 from charset_normalizer import detect
 import locale
+
 
 # 1 读取文件数据
 # 1.1 检测文件的编码方式
@@ -155,6 +163,7 @@ w_file = open('26-Python中的文件写入.txt', 'w+')  # 以w主访问模式打
 w_file.write('安鹏 love huli very much')  # 写入字符串后文件指针移动到文件末尾
 w_file.seek(0, 0)  # 移动文件指针到开头进行读取
 context = w_file.readline()
+print(locale.getpreferredencoding())
 w_file.close()
 print(context)
 
@@ -166,3 +175,32 @@ w_file.seek(0, 0)  # 移动文件指针到开头进行读取
 context = w_file.read()
 w_file.close()
 print(context)
+
+# 2.3 新建文件并写入内容：'x' mode 若新建文件已存在时，会报错。
+print('-' * 20 + 'x mode create a new file and open it for writing' + '-' * 20)
+x_file = open('26-Python中的文件新建并写入.txt', 'xb+')
+x_file.write(b'anpeng is huli boyfriend')
+x_file.seek(0, 0)  # offset=0 whence=0，移动文件指针到开头进行读取
+context = x_file.read()
+x_file.close()
+print(context)  # b" anpeng is huli boyfriend "
+
+# 3.文件备份：避免文件被误删除和误修改
+# 3.1 接收用户输入待备份文件名
+old_name = input('请输入您要备份的文件名：')
+# 3.2 规划备份文件的名字 xx[备份]后缀
+suffix_dot_index = old_name.rfind('.')  # 提取文件后缀点的下标 使用rfind，如anpeng.txt.mp3,该文件的后缀是.mp3
+new_name = old_name[:suffix_dot_index] + '[备份]' + old_name[suffix_dot_index:]
+# 3.3 备份文件写入数据
+old_file = open(old_name, 'rb')
+new_file = open(new_name, 'wb')  # 二进制打开和写入，不会出现读取和写入乱码
+# 不确定文件大小，循环读取再写入，当读取出来的数据没有时终止循环。
+while True:
+    context = old_file.read(1014)  # 每次读取1KB数据
+    if len(context) == 0:
+        break
+    else:
+        new_file.write(context)
+
+old_file.close()
+new_file.close()
