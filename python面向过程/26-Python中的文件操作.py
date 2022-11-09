@@ -109,10 +109,23 @@
         3、备份文件写入数据。
     作用：避免文件被误删除和误修改。
 
-4.文件和文件夹的操作
+4.os模块中的文件操作
+    导入os模块：import os
+    使用os功能：os.函数名()
+
+    文件操作：
+        文件重命名：os.rename()
+          删除文件：os.remove()
+
+    文件夹操作：
+        创建文件夹：os.mkdir(文件夹名字)
+        删除文件夹：os.rmdir(文件夹名字)
+        获取当前目录：os.getcwd()
+        改变默认目录：os.chdir(目录)
+        获取目录列表：os.listdir(目录)
 
 """
-
+import os
 from charset_normalizer import detect
 import locale
 
@@ -178,6 +191,10 @@ print(context)
 
 # 2.3 新建文件并写入内容：'x' mode 若新建文件已存在时，会报错。
 print('-' * 20 + 'x mode create a new file and open it for writing' + '-' * 20)
+fd = open('26-Python中的文件新建并写入.txt')
+if fd != 0:
+    fd.close()
+    os.remove('26-Python中的文件新建并写入.txt')
 x_file = open('26-Python中的文件新建并写入.txt', 'xb+')
 x_file.write(b'anpeng is huli boyfriend')
 x_file.seek(0, 0)  # offset=0 whence=0，移动文件指针到开头进行读取
@@ -185,22 +202,37 @@ context = x_file.read()
 x_file.close()
 print(context)  # b" anpeng is huli boyfriend "
 
-# 3.文件备份：避免文件被误删除和误修改
-# 3.1 接收用户输入待备份文件名
-old_name = input('请输入您要备份的文件名：')
-# 3.2 规划备份文件的名字 xx[备份]后缀
-suffix_dot_index = old_name.rfind('.')  # 提取文件后缀点的下标 使用rfind，如anpeng.txt.mp3,该文件的后缀是.mp3
-new_name = old_name[:suffix_dot_index] + '[备份]' + old_name[suffix_dot_index:]
-# 3.3 备份文件写入数据
-old_file = open(old_name, 'rb')
-new_file = open(new_name, 'wb')  # 二进制打开和写入，不会出现读取和写入乱码
-# 不确定文件大小，循环读取再写入，当读取出来的数据没有时终止循环。
-while True:
-    context = old_file.read(1014)  # 每次读取1KB数据
-    if len(context) == 0:
-        break
-    else:
-        new_file.write(context)
+# # 3.文件备份：避免文件被误删除和误修改
+# # 3.1 接收用户输入待备份文件名
+# old_name = input('请输入您要备份的文件名：')
+# # 3.2 规划备份文件的名字 xx[备份]后缀
+# suffix_dot_index = old_name.rfind('.')  # 提取文件后缀点的下标 使用rfind，如anpeng.txt.mp3,该文件的后缀是.mp3
+# new_name = old_name[:suffix_dot_index] + '[备份]' + old_name[suffix_dot_index:]
+# # 3.3 备份文件写入数据
+# old_file = open(old_name, 'rb')
+# new_file = open(new_name, 'wb')  # 二进制打开和写入，不会出现读取和写入乱码
+# # 不确定文件大小，循环读取再写入，当读取出来的数据没有时终止循环。
+# while True:
+#     context = old_file.read(1014)  # 每次读取1KB数据
+#     if len(context) == 0:
+#         break
+#     else:
+#         new_file.write(context)
+#
+# old_file.close()
+# new_file.close()
 
-old_file.close()
-new_file.close()
+# 4.os模块中的文件操作
+# 4.1 删除文件 -- os.remove(file_name)
+# 4.2 文件及文件夹的重命名 -- os.rename(old_name, new_name)
+# 4.3 创建文件夹
+os.mkdir('aa')
+# 4.4 删除文件夹
+os.rmdir('aa')
+# 4.5 获取工作目录
+print(os.getcwd())
+# 4.6 切换工作目录
+os.chdir('E:\\program\\Pythonproject')
+print(os.getcwd())
+# 4.7 获取目录列表 返回文件列表。listdir(dir_name)获取指定目录下文件列表，不指定dir_name时获取工作目录下的文件列表。
+print(os.listdir())  # ['Advanced numerical calculation', 'Leetcode', 'Python入门']
