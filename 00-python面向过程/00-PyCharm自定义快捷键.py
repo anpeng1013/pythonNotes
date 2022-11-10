@@ -14,6 +14,9 @@
     光标下移--alt+k
     光标上移--alt+i
 
+    光标返回--alt + b
+    光标前进--alt + n
+
     向左滚动--shift+j
     向右滚动--shift+l
     向上滚动--shift+i
