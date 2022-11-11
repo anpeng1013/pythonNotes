@@ -114,7 +114,7 @@ print(type(eval(str4)))
 # 9.complex(real[,imag])：创建一个复数，real为实部，image为虚部。
 print(complex(12))  # 12+0j
 print(complex(13, 14))  # 13+14j
-print(type(complex(1, 2)))  # <class 'complex'>
+print(type(complex(1, 2)))  # <clazz 'complex'>
 
 # 10.repr(x)：将对象x转换为字符串形式,格式字符会原样输出
 print(repr(str3))  # 将‘(1000,2000,3000)'字符原样输出，不像eval函数那样将其转换为tuple

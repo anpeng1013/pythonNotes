@@ -38,7 +38,7 @@ print(12 in [23, 12, 24])
 print(12 not in [23, 12, 24])
 print('name' in {'name': 'anpeng', 'age': 25})
 print('names' not in {'name': 'anpeng', 'age': 25})
-print(type({'name': 'anpeng', 'age': 25}.keys()))  # <class 'dict_keys'> 是字典关键字类型，不是list或tuple
+print(type({'name': 'anpeng', 'age': 25}.keys()))  # <clazz 'dict_keys'> 是字典关键字类型，不是list或tuple
 
 # 4.公共方法之len()
 str1 = 'anpeng'

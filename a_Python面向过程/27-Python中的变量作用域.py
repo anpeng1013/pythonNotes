@@ -5,12 +5,12 @@
 # @Software : PyCharm
 
 """
-    1、Python中能够隔离变量作用域的代码段是def、class、lambda。
+    1、Python中能够隔离变量作用域的代码段是def、clazz、lambda。
 
     2、if/elif/else、try/except/finally、for/while代码段不能隔离作用域，这些语句中的变量，在语句调用结束后可以继续访问。
 
     3、Python中的四大变量及其作用域
-        Local(局部变量)：定义在def、class、lambda语句内部的变量，只在函数或类语句内部有效，外部无法访问。
+        Local(局部变量)：定义在def、clazz、lambda语句内部的变量，只在函数或类语句内部有效，外部无法访问。
                 在函数语句中的变量，若没有被其内部函数引用形成闭包(见25-高阶函数)，则函数调用结束后会立即销毁局部变量。
         Enclosing(嵌套变量)：定义在内部函数外且在外部函数中的非全局的外部变量。若在内部函数中引用了这些变量，则形成闭包。
                             若内部函数中有同名函数，可用nonlocal关键字声明。

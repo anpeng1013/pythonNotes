@@ -13,9 +13,9 @@ print(set2, str_list, str_tuple, sep='\n')  # set(),list(),tuple()函数中传�
 
 # 2.创建空集合
 set2 = set()
-print(set2, type(set2))  # set() <class 'set'>
+print(set2, type(set2))  # set() <clazz 'set'>
 set3 = {}
-print(set3, type(set3))  # {} <class 'dict'>
+print(set3, type(set3))  # {} <clazz 'dict'>
 
 # 3.集合增加数据
 del set3

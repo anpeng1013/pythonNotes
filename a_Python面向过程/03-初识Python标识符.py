@@ -10,7 +10,7 @@
 # 严格区分大小写
 
 # 关键字
-# False none True and as assert break class
+# False none True and as assert break clazz
 # continue def del  elif else except finally for
 # from global if import in is lambda nonlocal
 # not or pass raise return try while with yield

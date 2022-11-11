@@ -122,13 +122,13 @@ func_default(1, 2)  # a=1,b=2,c=anpeng
 def func_packing(*args):
     print(type(args), args)
 
-func_packing(1, 2, 'anpeng')  # <class 'tuple'> (1, 2, 'anpeng')
+func_packing(1, 2, 'anpeng')  # <clazz 'tuple'> (1, 2, 'anpeng')
 
 # 使用 (**形参名) 时，需要使用关键字传参，参数传入后默认以字典的形式保存。
 def func_packing_keyword(**args):
     print(type(args), args)
 
-func_packing_keyword(a=(1, 2, 3), b={'a', 'huli'})  # <class 'dict'> {'a': (1, 2, 3), 'b': {'huli', 'a'}}
+func_packing_keyword(a=(1, 2, 3), b={'a', 'huli'})  # <clazz 'dict'> {'a': (1, 2, 3), 'b': {'huli', 'a'}}
 func_packing_keyword(name='anpeng', age=25)
 
 # 2.2.5 参数传递方式之拆包传递(解包裹)
@@ -136,10 +136,10 @@ func_packing_keyword(name='anpeng', age=25)
 def func_unpacking(arg4, arg5, arg6):
     print(arg4, type(arg4), '\t', arg5, type(arg5), '\t', arg6, type(arg6))
 
-func_unpacking(*(23, 'anpeng', 12.5))  # 23 <class 'int'> 	 anpeng <class 'str'> 	 12.5 <class 'float'>
+func_unpacking(*(23, 'anpeng', 12.5))  # 23 <clazz 'int'> 	 anpeng <clazz 'str'> 	 12.5 <clazz 'float'>
 
 # 将字典形式的参数按关键字来匹配，字典前需要加**
-func_unpacking(*(1, 2.5, 'anpeng'))  # 1 <class 'int'> 	 2.5 <class 'float'> 	 anpeng <class 'str'>
+func_unpacking(*(1, 2.5, 'anpeng'))  # 1 <clazz 'int'> 	 2.5 <clazz 'float'> 	 anpeng <clazz 'str'>
 func_unpacking(**{'arg4': 'anpeng', 'arg6': 25, 'arg5': 'huli'})  # 传入字典时，其键必须为形参名，不然对不上，没有位置顺序要求。
 
 
