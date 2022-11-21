@@ -3,8 +3,10 @@
 # @Author : anpeng
 # @File : Washer.py
 # @Software : PyCharm
+# import datetime
+
 class Washer:
-    def __init__(self, brand):  # self魔法方法，在创建对象时自动调用，self参数自动传递。
+    def __init__(self, brand):
         self.brand = brand
 
     def wash(self):

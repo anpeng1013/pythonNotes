@@ -4,8 +4,7 @@
 # @File : b_Python中类的self.py
 # @Software : PyCharm
 """
-类中的self
-    self指的是调用该函数的类的实例化对象。
+ 实例方法中的第一个参数self：指的是调用该函数的类的实例化对象。相当有java中的this关键字。
 """
 
 # 1.单个对象的self
