@@ -32,9 +32,15 @@
                             本质上，就是将当前对象self的product_time实例属性进行重新赋值。
                              2.如果先调用了父类的同名属性，实质上是子类的同名属性被重新赋值，所以需要调用子类自己的初始化再次重新赋值.
 
-多重继承：
+多重继承：子孙类，默认继承父类以及祖先类的所有方法和属性。
 
 super方法：
+        原始方法：父类名.函数名()。
+        super方法：
+            1、super(子类名，self).父类函数名() -- 若多个直接父类中存在同名函数，同样的是调用第一个父类中的同名函数。
+            2、super().父类函数名()
+        区别：父类名.函数名(self)调用，需要手动传入self
+             super().函数名()调用，会自动传入，不需要手动传入self
 
 """
 from Computer import MateBook, MagicBook
@@ -65,7 +71,18 @@ magicBook.call_father_show()  # this is instance function of Computer class
 
 # 5.2 为保证调用到的是父类的同名实例属性，必须在调用父类方法前调用父类的初始化方法并将当前对象self传入
 # 本质上，就是将当前对象self的product_time实例属性进行重新赋值。
-mateBook.get_father_product_time()  # the product time of the machine is 2022-11-15 20:31:02.770606
+mateBook.get_machine_product_time()  # the product time of the machine is 2022-11-15 20:31:02.770606
 
 # 5.3 如果先调用了父类的同名属性，实质上是子类的同名属性被重新赋值，所以需要调用子类自己的初始化再次重新赋值。
 mateBook.get_product_time()  # 1996-11-15
+
+# 6.多重继承
+mateBook16 = MateBook()
+mateBook16.get_machine_product_time()  # 子孙类调用父类的方法
+mateBook16.show()  # 子孙类调用祖先类的方法
+
+# 7.super方法可以减少代码冗余
+print('-' * 20 + 'super()' + '-' * 20)
+# 7.1 super(子类名, self).父类函数名()
+mateBook16.get_father_show()
+# 7.2 super().父类函数名()  # 见上面5.1的call_father_show()的定义体

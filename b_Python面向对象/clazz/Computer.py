@@ -33,10 +33,13 @@ class MateBook(Machine, Computer):
         self.__init__()  # 如果先调用了父类的同名属性，实质上是子类的同名属性被重新赋值，所以需要调用子类自己的初始化再次重新赋值。
         print(self.product_time)
 
-    def get_father_product_time(self):
-        Machine.__init__(self)
+    def get_machine_product_time(self):  # 为保证调用到的是父类的同名实例属性，必须在调用父类方法前调用父类的初始化方法并将当前对象self传入
+        Machine.__init__(self)  # 本质上，就是将当前对象self的product_time实例属性进行重新赋值
         Machine.get_product_time(self)
 
+    def get_father_show(self):
+        super(MateBook, self).__init__()
+        super(MateBook, self).show()
 
 class MagicBook(Computer):
     def __init__(self):  # 由于父类的init方法中并没有添加实例属性，所以即使子类重写init方法，也不必显示调用父类的init方法。
@@ -50,4 +53,8 @@ class MagicBook(Computer):
         print(f'the father function of the {self.__class__} has been overwritten')
 
     def call_father_show(self):
+        super().__init__()  # 此时self会被自动传入，不需要手动传入，这是与父类名.函数名(self)的区别。
         Computer.show(self)  # 类对象调用实例方法时，必须手动传入实例对象。
+
+class MateBook16(MateBook):
+    pass
