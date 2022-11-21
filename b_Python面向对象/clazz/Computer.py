@@ -37,6 +37,7 @@ class MateBook(Machine, Computer):
         Machine.__init__(self)
         Machine.get_product_time(self)
 
+
 class MagicBook(Computer):
     def __init__(self):  # 由于父类的init方法中并没有添加实例属性，所以即使子类重写init方法，也不必显示调用父类的init方法。
         self.brand = 'honor'
@@ -45,7 +46,7 @@ class MagicBook(Computer):
         print(f'this is an {self.brand} computer')
 
     def show(self):  # 重写父类Computer中的show方法，防止父类同名方法调用后修改实例属性的值，所以需要先调用初始化方法。
-
+        self.__init__()
         print(f'the father function of the {self.__class__} has been overwritten')
 
     def call_father_show(self):

@@ -24,7 +24,8 @@
                   子类在调用多个祖先都有的同名方法时，会优先调用元组中第一个遇到的祖先同名方法。
 
 子类重写父类的属性和方法：若父类的方法或属性被子类重写时，子类会优先调用子类中重写的方法和属性。如果先调用了父类的同名属性，
-                    实质上是子类的同名属性被重新赋值，所以需要调用子类自己的初始化再次重新赋值
+                    实质上是子类的同名属性被重新赋值，所以需要调用子类自己的初始化再次重新赋值。
+                    注意：若子类中重写了init方法，则必须先显示调用父类初始化方法。本质是将父类初始化属性添加(继承)到子类中。
 
 子类调用父类的同属性和同名方法：子类中调用父类的同名方法和类属性时，直接使用[父类名.方法名] 和 [父类名.类属性名]。
                         注意：1.为保证调用到的是父类的同名实例属性，必须在调用父类方法前调用父类的初始化方法并将当前对象self传入
@@ -51,7 +52,7 @@ mateBook = MateBook()
 print(mateBook.__class__)  # 返回实例的类型：<class 'Computer.MateBook'>
 print(mateBook.__class__.__base__)  # 返回子类的第一个直接父类：<class 'Computer.Machine'>
 print(mateBook.__class__.__bases__)  # 返回子类的所有直接父类：(<class 'Computer.Machine'>, <class 'Computer.Computer'>)
-# 2.1 MRO 返回子类的继承顺序，即在调用祖先中同名方法时，会优先调用第一遇到的祖先中的同名方法。
+# 2.1 MRO 返回子类的继承顺序，即在调用祖先中同名方法时，会优先调用第一个遇到的祖先中的同名方法。
 print(MateBook.__mro__)  # (<class 'Computer.MateBook'>, <class 'Computer.Machine'>, <class 'Computer.Computer'>, <class 'object'>)
 mateBook.show()  # this is instance function of <class 'Computer.MateBook'>。
 
