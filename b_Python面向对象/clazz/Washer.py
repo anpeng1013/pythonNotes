@@ -10,4 +10,4 @@ class Washer:
         self.brand = brand
 
     def wash(self):
-        print(str(self) + " " + self.brand + '牌洗衣机正在洗衣服中>>>')
+        print(str(self.brand + '牌洗衣机正在洗衣服中>>>'))
