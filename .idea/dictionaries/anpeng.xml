@@ -4,10 +4,14 @@
       <w>'hulili</w>
       <w>'love</w>
       <w>anpeng</w>
+      <w>arange</w>
+      <w>asarray</w>
+      <w>autopct</w>
       <w>b'anpeng</w>
       <w>cbam</w>
       <w>classmethod</w>
       <w>closefd</w>
+      <w>dtype</w>
       <w>facecolor</w>
       <w>figsize</w>
       <w>getcwd</w>
@@ -15,17 +19,25 @@
       <w>haier</w>
       <w>huli</w>
       <w>hulili</w>
+      <w>itemsize</w>
       <w>leetcode</w>
+      <w>linestyle</w>
+      <w>linspace</w>
       <w>ljust</w>
+      <w>loaddataset</w>
       <w>lstrip</w>
+      <w>ncols</w>
+      <w>nrows</w>
       <w>octonary</w>
       <w>peng</w>
+      <w>randn</w>
       <w>readlines</w>
       <w>rindex</w>
       <w>rjust</w>
       <w>rljust</w>
       <w>rstrip</w>
       <w>schoolname</w>
+      <w>trainstage</w>
       <w>unhashable</w>
     </words>
   </dictionary>

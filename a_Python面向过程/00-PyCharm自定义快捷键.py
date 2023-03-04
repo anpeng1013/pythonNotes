@@ -2,7 +2,10 @@
     新建conda环境，必须关掉代理
 
     运行--Alt+f9
-    调试--shift+f9
+    选择运行--Alt+shift+f9
+
+    调试--Alt+f10
+    选择调试--Alt+shift+f10
 
     设置/取消当前行断点--Alt + d
     调试进入执行语句--f7
