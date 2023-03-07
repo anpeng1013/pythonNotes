@@ -10,12 +10,12 @@ print("hello world")  # 注释内容
 
 # 演示-多行注释
 '''
+使用三个单引号进行多行注释:
 print("hello python")
-使用三个单引号进行多行注释
 '''
 
 """
-下面两条语句被多行注释了
+使用三个双引号进行多行注释：
 print("hello world")
 print("hello world")
 """
