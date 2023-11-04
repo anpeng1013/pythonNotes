@@ -13,9 +13,9 @@ print格式化输出:
 
 print()函数详解
     print(value[,..., sep='分隔符', end='结束符', file=sys.stdout])
-        value：print()函数可打印多个对象，默认以空格将多个对象隔开。
-                打印多个对象时，用逗号隔开。但是多个对象是字符串常量时，
-                可以不用逗号隔开，同时打印结果中多个字符串常量中间没哟空格隔开。
+        value：print()函数可打印多个对象，打印时默认以空格将多个对象隔开。
+                打印多个对象时，输入时用逗号隔开。但是多个对象是字符串常量时，
+                可以不用逗号隔开，但打印结果中多个字符串常量中间没有空格隔开。
         sep="自定义分隔符"：可以使用自己的分隔符，隔开多个打印的对象。
         end="自定义结束符"：默认为换行符，可以自己修改。
         file：默认将输出打印到控制台(sys.stdout)，输出可以打印到其它文件，
@@ -89,3 +89,5 @@ print('an''peng', end=' love huli forever\n')  # 修改结束符
 f = open("06-print输出文件.txt", 'a')  # 向指定文件中打印内容。
 print("ap love huli forever", "you known?", sep="--", end="...\n", file=f)
 f.close()
+
+print()

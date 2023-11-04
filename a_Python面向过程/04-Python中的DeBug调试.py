@@ -18,7 +18,7 @@ print(123)
 print("断点位置")  # 单击行号右边区域，出现红点即可
 
 # 2.Debug调试
-print("Debug调试-启动快捷键：shift+F9")
+print("Debug调试-启动快捷键：alt+shift+F10")
 print("Debug调试-进入语句运行快捷键：F7")
 print("Debug调试-逐条语句运行快捷键：F8")
 print("Debug调试-运行到下个断点处：F9")
